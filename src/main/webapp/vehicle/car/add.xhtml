@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/layout/layout.xhtml">
+
+    <ui:define name="title">
+        Add vehicle
+    </ui:define>
+
+    <ui:define name="content">
+        <section class="content-header">
+            <h1>
+                Vehicle
+                <small>Registration</small>
+            </h1>
+
+        </section>
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <!-- <h3 class="box-title">Basic</h3> -->
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <h:form id="reg" role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <h:outputLabel for="color" value="Color:" />
+                                    <h:inputText class="form-control" id="color" value="#{car.color}" />
+                                    <h:message for="color" errorClass="invalid" />
+                                </div>
+
+
+
+                                <p>
+                                    <h:panelGrid columns="2">
+                                        <h:commandButton id="register"
+                                                         action="#{carController.register}"
+                                                         value="Register" styleClass="register btn btn-primary" />
+
+
+
+                                        <h:messages styleClass="messages"
+                                                    errorClass="invalid" infoClass="valid"
+                                                    warnClass="warning" globalOnly="true" />
+                                    </h:panelGrid>
+                                </p>
+
+                            </div>
+
+                        </h:form>
+                    </div>
+                </div>
+
+
+            </div>   <!-- /.row -->
+        </section>
+
+        <script type="text/javascript">
+            $('.select2').select2();
+        </script>
+    </ui:define>
+</ui:composition>
