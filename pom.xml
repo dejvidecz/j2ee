@@ -309,6 +309,20 @@
             <version>4.12</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_2.0_spec</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jboss/jboss-client -->
+        <dependency>
+            <groupId>jboss</groupId>
+            <artifactId>jboss-client</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+
 
 
     </dependencies>

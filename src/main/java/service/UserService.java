@@ -1,7 +1,5 @@
 package service;
 
-import DAO.CarDAO;
-import model.Car;
 import model.User;
 import org.picketlink.Identity;
 import org.picketlink.authentication.AuthenticationException;
@@ -10,7 +8,6 @@ import rbac.SecurityInitializer;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.POST;
 import java.io.Serializable;
 
 /**
