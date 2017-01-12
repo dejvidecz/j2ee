@@ -78,11 +78,17 @@
     <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.3.4" level="project" />
     <orderEntry type="library" name="Maven: javax.faces:jsf-api:2.1" level="project" />
     <orderEntry type="library" name="Maven: javax.ejb:ejb-api:3.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.ejb:javax.ejb-api:3.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.transaction:javax.transaction-api:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.7-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:font-awesome:4.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:startbootstrap-sb-admin-2:1.0.8-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:metisMenu:1.1.3-1" level="project" />
     <orderEntry type="library" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.picketlink:picketlink:2.7.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.omnifaces:omnifaces:2.5.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10.0.redhat-5" level="project" />
+    <orderEntry type="library" name="Maven: javax:javaee-web-api:7.0" level="project" />
   </component>
 </module>

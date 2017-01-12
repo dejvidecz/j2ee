@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/admin/layout/layout.xhtml">
+    <ui:define name="title">
+        Administrace SB
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:dataTable var="_vehicle" value="#{vehicleList}" rendered="#{not empty vehicleList}"
+                     styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_vehicle.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">color</f:facet>
+                #{_vehicle.color}
+            </h:column>
+        </h:dataTable>
+
+
+    </ui:define>
+
+</ui:composition>

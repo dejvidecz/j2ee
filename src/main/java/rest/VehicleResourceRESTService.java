@@ -40,8 +40,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import model.Vehicle;
+import org.picketlink.authorization.annotations.RolesAllowed;
 import repository.VehicleRepository;
 import service.CarService;
+
+import static rbac.ApplicationRole.ADMINISTRATOR;
 
 /**
  * This class produces a RESTful service to read/write
@@ -63,14 +66,14 @@ public class VehicleResourceRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Vehicle> listAllMembers() {
+    public List<Vehicle> vehicleList() {
         return repository.findAll();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Vehicle lookupMemberById(@PathParam("id") long id) {
+    public Vehicle lookuVehicleById(@PathParam("id") long id) {
         Vehicle member = repository.findById(id);
         if (member == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
