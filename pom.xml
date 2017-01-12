@@ -110,6 +110,20 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- clip -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.1.5.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!-- clip -->
+
     <dependencies>
 
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
@@ -284,29 +298,20 @@
             <version>7.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jboss.arquillian.junit/arquillian-junit-container -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
-            <version>1.1.12.Final</version>
+            <version>1.1.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-tomcat-remote-7</artifactId>
+            <version>1.0.0.CR7</version>
         </dependency>
 
 
-
     </dependencies>
-    <!-- clip -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>1.1.12.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <!-- clip -->
+
     <build>
 
 
