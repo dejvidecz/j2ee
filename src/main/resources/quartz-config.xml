@@ -21,7 +21,7 @@
                 <job-name>Vehicle export</job-name>
                 <job-group>Export</job-group>
                 <!-- It will run every day seconds -->
-                <cron-expression>0/86400 * * * * ?</cron-expression>
+                <cron-expression>0 0 0 * * ?</cron-expression>
             </cron>
         </trigger>
     </schedule>
