@@ -90,5 +90,6 @@
     <orderEntry type="library" name="Maven: org.omnifaces:omnifaces:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10.0.redhat-5" level="project" />
     <orderEntry type="library" name="Maven: javax:javaee-web-api:7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.junit:arquillian-junit-container:unknown" level="project" />
   </component>
 </module>
