@@ -107,12 +107,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <!-- clip -->
-    <dependencyManagement>
-        <dependencies>
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
@@ -122,7 +116,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!-- clip -->
+
 
     <dependencies>
 
