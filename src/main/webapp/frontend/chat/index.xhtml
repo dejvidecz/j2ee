@@ -1,0 +1,41 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:outputScript library="js" name="websocket.js" />
+
+<div class="chat" style="position: fixed;bottom:0;right:0;height: 400px;width:300px;overflow: scroll;padding:20px;border: 1px solid black">
+        <div id="content" style="overflow: scroll;height: 300px;">
+        </div>
+
+
+        <div class="forms" style="position: absolute;bottom:0;">
+            <div id="username-form-wrapper">
+                <h:form id="username-form">
+                    <div class="form-group">
+                        <input placeholder="Your name" type="text" name="username" id="username" />
+                        <a class="btn" onclick="formSubmitUsername()">Set username</a>
+                    </div>
+
+                </h:form>
+            </div>
+
+
+            <div id="chat-form-wrapper" style="display:none;">
+                <h:form id="chat-form">
+                    <div class="form-group">
+                    <input placeholder="message" type="text" name="message" id="message" />
+                    <a class="btn" onclick="formSubmitMessage()">Add message</a>
+                    </div>
+                </h:form>
+            </div>
+
+
+    </div>
+
+</div>
+
+
+</ui:composition>

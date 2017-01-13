@@ -5,7 +5,14 @@ import org.omnifaces.filter.HttpFilter;
 import org.omnifaces.util.Servlets;
 import org.picketlink.Identity;
 import org.picketlink.authorization.util.AuthorizationUtil;
+import org.picketlink.config.http.AuthorizationConfiguration;
+import org.picketlink.config.http.PathConfiguration;
+import org.picketlink.http.internal.authorization.AbstractPathAuthorizer;
+import org.picketlink.idm.IdentityManager;
 import org.picketlink.idm.PartitionManager;
+import org.picketlink.idm.model.basic.BasicModel;
+import org.picketlink.idm.model.basic.Role;
+import org.picketlink.idm.model.basic.User;
 import rbac.ApplicationRole;
 
 import javax.inject.Inject;
@@ -18,14 +25,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- *
  * Created by Dejv on 12.01.17.
  */
-@WebFilter("/admin/*")
-public class AdminAuthorizationFilter extends HttpFilter {
+@WebFilter("/frontend/member/*")
+public class MemberAuthorizationFilter extends HttpFilter {
 
     @Inject
     private Identity identity;
+
+    @Inject
+    private IdentityManager identityManager;
 
     @Inject
     private PartitionManager partitionManager;
@@ -33,32 +42,15 @@ public class AdminAuthorizationFilter extends HttpFilter {
 
     @Override
     public void doFilter(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, HttpSession httpSession, FilterChain filterChain) throws ServletException, IOException {
-        String loginURL = httpServletRequest.getContextPath() + AdminUrlHelper.LOGIN_PAGE;
-
-
-        boolean loggedIn = identity.isLoggedIn();
-        boolean loginRequest = httpServletRequest.getRequestURI().equals(loginURL);
-        boolean resourceRequest = Servlets.isFacesResourceRequest(httpServletRequest);
 
         if (!AuthorizationUtil.hasRole(identity, partitionManager, ApplicationRole.MEMBER)) {
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             httpServletResponse.setContentType("Not acces level");
             httpServletResponse.getWriter().write("Unauthorized");
-        }
-
-        String originalUrl = httpServletRequest.getRequestURL().toString();
-
-
-        if (loggedIn || loginRequest || resourceRequest) {
-            if (!resourceRequest) { // Prevent browser from caching restricted resources. See also http://stackoverflow.com/q/4194207/157882
-                Servlets.setNoCacheHeaders(httpServletResponse);
-            }
-            filterChain.doFilter(httpServletRequest, httpServletResponse); // So, just continue request.
-        }
-        else {
-            httpServletRequest.getSession().setAttribute("originalURL", originalUrl);
-
-            Servlets.facesRedirect(httpServletRequest, httpServletResponse, loginURL);
+        } else {
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
     }
 }
+
+

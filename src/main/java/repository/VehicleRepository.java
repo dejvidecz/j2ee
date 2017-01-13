@@ -1,7 +1,8 @@
 package repository;
 
 import model.Bazar;
-import model.Vehicle;
+import model.VehicleOffer;
+import model.VehicleOffer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,11 +24,11 @@ public class VehicleRepository {
 
     private EntityManagerFactory entityManagerFactory;
 
-    public Vehicle findById(long id){
-        return entityManager.find(Vehicle.class,id);
+    public VehicleOffer findById(long id){
+        return entityManager.find(VehicleOffer.class,id);
     }
 
-    public List<Vehicle> findAll() {
-        return entityManager.createQuery("select v from Vehicle v").getResultList();
+    public List<VehicleOffer> findAll() {
+        return entityManager.createQuery("select v from VehicleOffer v").getResultList();
     }
 }

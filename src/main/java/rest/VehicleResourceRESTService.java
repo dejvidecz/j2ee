@@ -39,7 +39,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.Vehicle;
+import model.VehicleOffer;
+import model.VehicleOffer;
 import org.picketlink.authorization.annotations.RolesAllowed;
 import repository.VehicleRepository;
 import service.CarService;
@@ -66,15 +67,15 @@ public class VehicleResourceRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Vehicle> vehicleList() {
+    public List<VehicleOffer> vehicleList() {
         return repository.findAll();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Vehicle lookuVehicleById(@PathParam("id") long id) {
-        Vehicle member = repository.findById(id);
+    public VehicleOffer lookuVehicleById(@PathParam("id") long id) {
+        VehicleOffer member = repository.findById(id);
         if (member == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
@@ -88,15 +89,15 @@ public class VehicleResourceRESTService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createVehicle(Vehicle vehicle) {
+    public Response createVehicle(VehicleOffer vehicleOffer) {
 
         Response.ResponseBuilder builder = null;
 
         try {
             // Validates member using bean validation
-            validateMember(vehicle);
+            validateMember(vehicleOffer);
 
-            vehicleService.create(vehicle);
+            vehicleService.create(vehicleOffer);
 
             // Create an "ok" response
             builder = Response.ok();
@@ -128,13 +129,13 @@ public class VehicleResourceRESTService {
      * exception so that it can be interpreted separately.
      * </p>
      * 
-     * @param vehicle Vehicle to be validated
+     * @param vehicleOffer Vehicle to be validated
      * @throws ConstraintViolationException If Bean Validation errors exist
      * @throws ValidationException If member with the same email already exists
      */
-    private void validateMember(Vehicle vehicle) throws ConstraintViolationException, ValidationException {
+    private void validateMember(VehicleOffer vehicleOffer) throws ConstraintViolationException, ValidationException {
         // Create a bean validator and check for issues.
-        Set<ConstraintViolation<Vehicle>> violations = validator.validate(vehicle);
+        Set<ConstraintViolation<VehicleOffer>> violations = validator.validate(vehicleOffer);
 
         if (!violations.isEmpty()) {
             throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>(violations));

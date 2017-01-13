@@ -1,7 +1,7 @@
 package service;
 
 import DAO.CarDAO;
-import model.Car;
+import model.CarOffer;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -17,7 +17,7 @@ public class CarService implements Serializable {
     private transient CarDAO carDAO;
 
     /*
-    public Car create(Car car){
+    public CarOffer create(CarOffer car){
         return carDAO.create(car);
     }
 */
@@ -30,11 +30,11 @@ public class CarService implements Serializable {
     }
 
 
-    public void delete(Car bazar) {
+    public void delete(CarOffer bazar) {
         carDAO.delete(bazar);
     }
 
-    public void update(Car bazar) {
+    public void update(CarOffer bazar) {
         carDAO.update(bazar);
     }
 }

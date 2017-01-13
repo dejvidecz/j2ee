@@ -4,8 +4,6 @@ import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
 import javax.jms.*;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 /**
  * Toto je jms server prijimajici zpravy a odesila emaily
@@ -26,6 +24,7 @@ public class EmailJmsReceiver implements MessageListener {
         try {
             Email email = message.getBody(Email.class);
             System.out.println("Server Incoming email to send : " + email.getBody());
+            //send email here
 
         } catch (JMSException e) {
             e.printStackTrace();

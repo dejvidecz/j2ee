@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+
+    <ui:define name="title">
+        Registration
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:form id="reg" role="form">
+            <div class="box-body">
+
+                <div class="form-group">
+                    <h:outputLabel for="username" value="Username:" />
+                    <h:inputText class="form-control" id="username" value="#{user.username}" />
+                    <h:message for="username" errorClass="invalid" />
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="password" value="Password:" />
+                    <h:inputText class="form-control" id="password" value="#{user.password}" />
+                    <h:message for="password" errorClass="invalid" />
+                </div>
+
+
+                <p>
+                    <h:panelGrid columns="2">
+                        <h:commandButton id="register"
+                                         action="#{userController.register}"
+                                         value="Register" styleClass="register btn btn-primary" />
+
+
+
+                        <h:messages styleClass="messages"
+                                    errorClass="invalid" infoClass="valid"
+                                    warnClass="warning" globalOnly="true" />
+                    </h:panelGrid>
+                </p>
+
+            </div>
+
+        </h:form>
+
+
+
+
+
+        <script type="text/javascript">
+            $('.select2').select2();
+        </script>
+    </ui:define>
+</ui:composition>

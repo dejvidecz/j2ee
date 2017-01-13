@@ -1,6 +1,7 @@
 package data;
 
-import model.Vehicle;
+import model.VehicleOffer;
+import model.VehicleOffer;
 import repository.VehicleRepository;
 
 import javax.annotation.PostConstruct;
@@ -17,16 +18,16 @@ public class VehicleListProducer {
     @Inject
     private VehicleRepository vehicleRepository;
 
-    public List<Vehicle> vehicleList;
+    public List<VehicleOffer> vehicleOfferList;
 
     @PostConstruct
     public void retrieveAllMembersOrderedByName() {
-        vehicleList = vehicleRepository.findAll();
+        vehicleOfferList = vehicleRepository.findAll();
     }
 
     @Produces
     @Named
-    public List<Vehicle> getVehicleList(){
-        return vehicleList;
+    public List<VehicleOffer> getVehicleOfferList(){
+        return vehicleOfferList;
     }
 }

@@ -4,22 +4,28 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 template="/frontend/layout/layout.xhtml">
     <ui:define name="title">
-        FrontEnd
+        Super auto motoOffer bazar
     </ui:define>
 
     <ui:define name="content">
 
-        <h:dataTable var="_vehicle" value="#{vehicleList}" rendered="#{not empty vehicleList}"
-                     styleClass="table table-striped">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                #{_vehicle.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">color</f:facet>
-                #{_vehicle.color}
-            </h:column>
-        </h:dataTable>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Vehicles</h2>
+                <p>Tady jsou auta a motoOffer</p>
+                <p><a class="btn btn-default" href="#{frontendUrlHelper.vehicleList}" role="button">View cars and motos »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Auta</h2>
+                <p>Tady jsou auta</p>
+                <p><a class="btn btn-default" href="#{frontendUrlHelper.carList}" role="button">View cars »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Moto</h2>
+                <p>Tady jsou motoOffer</p>
+                <p><a class="btn btn-default" href="#{frontendUrlHelper.motoList}" role="button">View details »</a></p>
+            </div>
+        </div>
 
 
     </ui:define>

@@ -9,7 +9,7 @@
 
     <ui:define name="content">
 
-        <h:dataTable var="_vehicle" value="#{vehicleList}" rendered="#{not empty vehicleList}"
+        <h:dataTable var="_vehicle" value="#{getVehicleOfferList}" rendered="#{not empty getVehicleOfferList}"
                      styleClass="table table-striped">
             <h:column>
                 <f:facet name="header">Id</f:facet>

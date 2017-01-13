@@ -1,0 +1,49 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"/>
+                    <span class="icon-bar"/>
+                    <span class="icon-bar"/>
+                </button>
+                <a class="navbar-brand" href="#{frontendUrlHelper.indexPage}">JavaEE project</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <h:form rendered="#{!userController.identity.loggedIn}" styleClass="navbar-form navbar-right">
+                    <div class="form-group">
+                        <h:inputText a:placeholder="Username" class="form-control" id="username"
+                                     value="#{user.username}"/>
+                    </div>
+                    <div class="form-group">
+                        <h:inputSecret a:placeholder="Paasword" class="form-control" id="password"
+                                       value="#{user.password}"/>
+                    </div>
+                    <h:commandButton id="sign"
+                                     action="#{userController.loginFe}"
+                                     value="Sign in" styleClass="btn btn-success"/>
+                    <h:link outcome="/frontend/user/register.jsf" styleClass="btn btn-info">Sign up</h:link>
+                </h:form>
+                <ui:fragment rendered="#{userController.identity.loggedIn}">
+                    <h:form styleClass="navbar-form navbar-right">
+
+                        <h:outputLink value="#{frontendUrlHelper.vehicleAdd}" styleClass="btn btn-danger">test</h:outputLink>
+                        <h:commandButton id="logout"
+                                         action="#{userController.logout}"
+                                         value="Logout" styleClass="btn btn-success"/>
+                    </h:form>
+
+                </ui:fragment>
+
+            </div><!--/.navbar-collapse -->
+        </div>
+    </nav>
+
+</ui:composition>

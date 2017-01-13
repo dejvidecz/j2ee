@@ -24,8 +24,9 @@
 </h:head>
 
 <h:body>
+    <ui:include src="navbar.xhtml" />
 
-    <div id="page">
+    <div id="page" style="padding-top: 50px;">
 
         <div id="header">
             <ui:insert name="header" >
@@ -33,19 +34,20 @@
             </ui:insert>
         </div>
 
-        <div id="content">
+        <div class="container">
             <ui:insert name="content" >
 
             </ui:insert>
         </div>
 
-        <div id="footer">
-            <ui:insert name="footer" >
-
-            </ui:insert>
+        <div id="footer" >
+            <ui:include src="/frontend/chat/index.xhtml" />
         </div>
 
     </div>
 
+
 </h:body>
+
+
 </html>

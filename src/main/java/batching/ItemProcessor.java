@@ -1,6 +1,8 @@
 package batching;
 
-import model.Vehicle;
+import model.VehicleOffer;
+import model.VehicleOffer;
+
 import javax.inject.Named;
 
 /**
@@ -10,8 +12,8 @@ import javax.inject.Named;
 public class ItemProcessor implements javax.batch.api.chunk.ItemProcessor {
 
     @Override
-    public Vehicle processItem(Object t) {
-       return (Vehicle) t;
+    public VehicleOffer processItem(Object t) {
+       return (VehicleOffer) t;
     }
 
 }

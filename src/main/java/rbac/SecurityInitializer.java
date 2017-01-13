@@ -7,6 +7,7 @@ import org.picketlink.idm.IdentityManager;
 import org.picketlink.idm.PartitionManager;
 import org.picketlink.idm.RelationshipManager;
 import org.picketlink.idm.credential.Password;
+import org.picketlink.idm.model.basic.BasicModel;
 import org.picketlink.idm.model.basic.Role;
 import org.picketlink.idm.model.basic.User;
 
@@ -16,6 +17,7 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 import static org.picketlink.idm.model.basic.BasicModel.grantRole;
+import static org.picketlink.idm.model.basic.BasicModel.hasRole;
 import static rbac.ApplicationRole.*;
 
 @Singleton
@@ -36,7 +38,7 @@ public class SecurityInitializer {
 
 
 
-    private void createUser(String loginName, String roleName) {
+    public void createUser(String loginName, String roleName) {
         User user = new User(loginName);
 
         IdentityManager identityManager = this.partitionManager.createIdentityManager();

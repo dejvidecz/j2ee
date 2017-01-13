@@ -1,7 +1,5 @@
 package websocket;
 
-import model.Car;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -18,11 +16,12 @@ import java.util.logging.Logger;
  * Created by Dejv on 12.01.17.
  */
 @ApplicationScoped
-@ServerEndpoint("/actions")
-public class CarWebSocketServer {
+@ServerEndpoint("/chat")
+public class ChatWebSocketServer {
 
     @Inject
-    private CarSessionHandler sessionHandler;
+    private ChatSessionHandler sessionHandler;
+
 
     @OnOpen
     public void open(Session session) {
@@ -37,7 +36,7 @@ public class CarWebSocketServer {
 
     @OnError
     public void onError(Throwable error) {
-        Logger.getLogger(CarWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
+        Logger.getLogger(ChatWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
 
     }
 
@@ -46,17 +45,19 @@ public class CarWebSocketServer {
         try (JsonReader reader = Json.createReader(new StringReader(message))) {
             JsonObject jsonMessage = reader.readObject();
 
-            if ("add".equals(jsonMessage.getString("action"))) {
-                Car car = new Car();
-                car.setDate_accepted(new Date());
-                car.setColor(jsonMessage.getString("color"));
+            System.out.println(message);
+            System.out.println(jsonMessage.toString());
 
-                sessionHandler.addCar(car);
+            if ("username".equals(jsonMessage.getString("action"))) {
+                sessionHandler.setUsername(jsonMessage.getString("username"), session);
             }
 
-            if ("remove".equals(jsonMessage.getString("action"))) {
-                int id = (int) jsonMessage.getInt("id");
-                sessionHandler.removeCar(id);
+            if ("add".equals(jsonMessage.getString("action"))) {
+                ChatMessage chatMessage = new ChatMessage();
+                chatMessage.setMessage(jsonMessage.getString("body"));
+                chatMessage.setCreated_at(new Date());
+                sessionHandler.messageAccepted(chatMessage, session);
+
             }
 
         }

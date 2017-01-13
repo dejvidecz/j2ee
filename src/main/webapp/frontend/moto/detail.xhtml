@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+    <ui:define name="title">
+        #{motoOffer.title} | Detail
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:commandButton onclick="history.go(-1)" >Zpet</h:commandButton>
+
+
+       <table class="table table-striped">
+           <tbody>
+           <tr>
+               <th>Title</th>
+               <td>#{motoOffer.title}</td>
+           </tr>
+           <tr>
+               <th>Description</th>
+               <td>#{motoOffer.description}</td>
+           </tr>
+           <tr>
+               <th>Color</th>
+               <td>#{motoOffer.color}</td>
+           </tr>
+           <tr>
+               <th>Brand</th>
+               <td>#{motoOffer.brand}</td>
+           </tr>
+           <tr>
+               <th>motoOffer type</th>
+               <td>#{motoOffer.motoType}</td>
+           </tr>
+           <tr>
+               <th>Year</th>
+               <td>#{motoOffer.year}</td>
+           </tr>
+           <tr>
+               <th>Price</th>
+               <td>#{motoOffer.sellPrice}</td>
+           </tr>
+           <tr>
+               <th>Contact email</th>
+               <td>#{motoOffer.email}</td>
+           </tr>
+           <tr>
+               <th>Contact phone</th>
+               <td>#{motoOffer.phoneNumber}</td>
+           </tr>
+           </tbody>
+
+       </table>
+
+
+    </ui:define>
+
+</ui:composition>

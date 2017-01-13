@@ -1,6 +1,7 @@
 package batching;
 
-import model.Vehicle;
+import model.VehicleOffer;
+import model.VehicleOffer;
 import repository.VehicleRepository;
 import service.CarService;
 
@@ -27,13 +28,13 @@ public class ItemReader extends AbstractItemReader {
     @Inject
     private VehicleRepository vehicleRepository;
 
-    private List<Vehicle> vehicleList = new ArrayList<Vehicle>();
+    private List<VehicleOffer> vehicleOfferList = new ArrayList<VehicleOffer>();
 
     private int index;
 
     public void open(Serializable checkpoint) throws Exception {
         System.out.println("opening");
-        vehicleList = vehicleRepository.findAll();
+        vehicleOfferList = vehicleRepository.findAll();
         index=0;
     }
 
@@ -43,8 +44,8 @@ public class ItemReader extends AbstractItemReader {
     @Override
     public Object readItem() throws Exception {
         System.out.println("read index"+index);
-        if(!vehicleList.isEmpty() && (vehicleList.size()-1) > index){
-            return vehicleList.get(index++);
+        if(!vehicleOfferList.isEmpty() && (vehicleOfferList.size()-1) > index){
+            return vehicleOfferList.get(index++);
         }else{
             return null;
         }

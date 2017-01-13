@@ -39,4 +39,8 @@ public class UserService implements Serializable {
             this.identity.logout();
         }
     }
+
+    public void register(User user) {
+        securityInitializer.createUser(user.getUsername(),user.getRole());
+    }
 }

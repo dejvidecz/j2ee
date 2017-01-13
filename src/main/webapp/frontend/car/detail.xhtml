@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+    <ui:define name="title">
+        #{carOffer.title} | Detail
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:commandButton onclick="history.go(-1)" >Zpet</h:commandButton>
+
+
+       <table class="table table-striped">
+           <tbody>
+           <tr>
+               <th>Title</th>
+               <td>#{carOffer.title}</td>
+           </tr>
+           <tr>
+               <th>Description</th>
+               <td>#{carOffer.description}</td>
+           </tr>
+           <tr>
+               <th>Color</th>
+               <td>#{carOffer.color}</td>
+           </tr>
+           <tr>
+               <th>Brand</th>
+               <td>#{carOffer.brand}</td>
+           </tr>
+           <tr>
+               <th>Car type</th>
+               <td>#{carOffer.carType}</td>
+           </tr>
+           <tr>
+               <th>Year</th>
+               <td>#{carOffer.year}</td>
+           </tr>
+           <tr>
+               <th>Price</th>
+               <td>#{carOffer.sellPrice}</td>
+           </tr>
+           <tr>
+               <th>Contact email</th>
+               <td>#{carOffer.email}</td>
+           </tr>
+           <tr>
+               <th>Contact phone</th>
+               <td>#{carOffer.phoneNumber}</td>
+           </tr>
+           </tbody>
+
+       </table>
+
+
+    </ui:define>
+
+</ui:composition>

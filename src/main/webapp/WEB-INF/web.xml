@@ -72,4 +72,10 @@
         </listener-class>
     </listener>
 
+
+    <context-param>
+        <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+        <param-value>false</param-value>
+    </context-param>
+
 </web-app>

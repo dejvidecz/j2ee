@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+    <ui:define name="title">
+       Vyberte co chcete pridat
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:outputLink value="#{frontendUrlHelper.carAdd}" styleClass="btn btn-lg">
+            Pridat auto
+        </h:outputLink>
+
+        <br />
+        <h:outputLink value="#{frontendUrlHelper.motoAdd}" styleClass="btn btn-lg">
+            Pridat motoOffer
+        </h:outputLink>
+
+
+
+    </ui:define>
+
+</ui:composition>

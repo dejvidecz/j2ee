@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+    <ui:define name="title">
+        Vypis auto a motoOffer
+    </ui:define>
+
+    <ui:define name="content">
+
+        <h:panelGroup rendered="#{empty vehicleOfferList}">
+            <em>No cars and motos</em>
+        </h:panelGroup>
+        <h:dataTable var="_vehicle" value="#{vehicleOfferList}"
+                     rendered="#{not empty vehicleOfferList}"
+                     styleClass="table table-striped">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_vehicle.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                #{_vehicle.title}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Brand</f:facet>
+                #{_vehicle.brand}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Color</f:facet>
+                #{_vehicle.color}
+            </h:column>
+            <h:column>
+                <f:facet name="header">SellPrice</f:facet>
+                #{_vehicle.sellPrice}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:form>
+               <span>
+
+                <h:commandLink title="Edit" class="fa fa-fw fa-edit" action="#{vehicleController.detail(_vehicle)}"
+                               value=""/>
+                </span>
+
+
+                </h:form>
+            </h:column>
+
+
+        </h:dataTable>
+
+
+    </ui:define>
+
+</ui:composition>

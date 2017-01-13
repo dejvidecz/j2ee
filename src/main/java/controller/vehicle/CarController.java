@@ -1,7 +1,7 @@
-package controller;
+package controller.vehicle;
 
-import jms.EmailJsmSender;
-import model.Car;
+import helpers.FrontendUrlHelper;
+import model.CarOffer;
 import service.CarService;
 
 import javax.annotation.PostConstruct;
@@ -10,12 +10,7 @@ import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSContext;
 import javax.jms.JMSException;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.Serializable;
 import java.util.Date;
@@ -29,21 +24,27 @@ public class CarController implements Serializable {
 
     @Produces
     @Named
-    private Car car;
+    private CarOffer carOffer;
 
     @Inject
     private CarService carService;
 
     @PostConstruct
     public void init() throws NamingException, JMSException {
-        car = new Car();
-        car.setDate_accepted(new Date());
+        carOffer = new CarOffer();
     }
 
     public String register() throws NamingException, JMSException {
-        carService.create(car);
+        carOffer.setDate_added(new Date());
+        carService.create(carOffer);
         init();
-        return  "add";
+        return FrontendUrlHelper.CAR_LIST;
+    }
+
+
+    public String detail(CarOffer carOffer){
+        this.carOffer = carOffer;
+        return "/frontend/carOffer/detail";
     }
 
 }

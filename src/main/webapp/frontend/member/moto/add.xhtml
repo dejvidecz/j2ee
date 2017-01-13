@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/frontend/layout/layout.xhtml">
+    <ui:define name="title">
+    Pridani motorky
+     </ui:define>
+
+    <ui:define name="content">
+        <h:form id="reg" role="form">
+            <div class="box-body">
+
+                <div class="form-group">
+                    <h:outputLabel for="year" value="Year:"/>
+                    <h:inputText class="form-control" id="year" value="#{motoOffer.year}"/>
+                    <h:message for="year" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="brand" value="Brand:"/>
+                    <h:selectOneMenu id="brand" class="form-control select2" value="#{motoOffer.brand}">
+                        <f:selectItems value="#{motoOffer.getBrandValues}"/>
+                    </h:selectOneMenu>
+                    <h:message for="brand" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="color" value="Color:"/>
+                    <h:inputText class="form-control" id="color" value="#{motoOffer.color}"/>
+                    <h:message for="color" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="sellPrice" value="Sell price:"/>
+                    <h:inputText class="form-control" id="sellPrice" value="#{motoOffer.sellPrice}"/>
+                    <h:message for="sellPrice" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="title" value="Title:"/>
+                    <h:inputText class="form-control" id="title" value="#{motoOffer.title}"/>
+                    <h:message for="title" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="description" value="Description:"/>
+                    <h:inputText class="form-control" id="description" value="#{motoOffer.description}"/>
+                    <h:message for="description" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="zip" value="Zip code:"/>
+                    <h:inputText class="form-control" id="zip" value="#{motoOffer.zip}"/>
+                    <h:message for="zip" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="phone" value="Telephone number:"/>
+                    <h:inputText class="form-control" id="phone" value="#{carOffer.phoneNumber}"/>
+                    <h:message for="phone" errorClass="invalid"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="email" value="Email:"/>
+                    <h:inputText class="form-control" id="email" value="#{carOffer.email}"/>
+                    <h:message for="email" errorClass="invalid"/>
+                </div>
+
+                <p>
+                    <h:panelGrid columns="2">
+                        <h:commandButton id="register"
+                                         action="#{motoController.register}"
+                                         value="Register" styleClass="register btn btn-primary"/>
+
+
+                        <h:messages styleClass="messages"
+                                    errorClass="invalid" infoClass="valid"
+                                    warnClass="warning" globalOnly="true"/>
+                    </h:panelGrid>
+                </p>
+
+            </div>
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
