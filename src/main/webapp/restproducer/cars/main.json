@@ -1,0 +1,32 @@
+[
+
+  {
+    "year" : 2002,
+    "brand" : "Audi",
+    "color" : "silver",
+    "sellPrice" : 20000,
+    "title" : "Super audi offer",
+    "date_added" : 143656756
+    "description" : "Mega super description of offer",
+    "zip" : "12345",
+    "email" : "dejvidecz@gmail.com",
+    "phoneNumber" : "77322233345",
+    "carType" : "SEDAN",
+    "doors" : 4
+  },
+  {
+    "year" : 2002,
+    "brand" : "Audi",
+    "color" : "silver",
+    "sellPrice" : 20000,
+    "title" : "Super audi offer 2222",
+    "date_added" : 143656756
+    "description" : "Mega super description of offer",
+    "zip" : "12345",
+    "email" : "dejvidecz@gmail.com",
+    "phoneNumber" : "77322233345",
+    "carType" : "SEDAN",
+    "doors" : 4
+  }
+
+]

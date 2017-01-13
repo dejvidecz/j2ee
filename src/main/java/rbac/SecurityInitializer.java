@@ -30,9 +30,8 @@ public class SecurityInitializer {
     @PostConstruct
     public void createUsers() {
         createUser("admin", ADMINISTRATOR);
-        createUser("agent", AGENT);
-        createUser("seller", SELLER);
-        createUser("buyer", BUYER);
+        createUser("moderator", MODERATOR);
+
 
     }
 

@@ -65,6 +65,10 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
 
     <listener>
         <listener-class>

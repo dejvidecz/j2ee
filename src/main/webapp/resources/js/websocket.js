@@ -1,7 +1,8 @@
 /**
+ *
  * Created by Dejv on 12.01.17.
  */
-window.onload = init;
+
 var socket = new WebSocket("ws://mysupperapp-javaeeschool2.44fs.preview.openshiftapps.com/jboss-helloworld/chat");
 var ACTION_ADD = "add";
 var ACTION_SET_USERNAME = "username";
@@ -22,6 +23,13 @@ function printMessage(message) {
 
     var messageDiv = document.createElement("div");
     content.appendChild(messageDiv);
+
+    var messageDate = document.createElement("span");
+    messageDate.style.display = "block";
+    messageDate.style.fontSize = "10px";
+    messageDate.innerHTML = message.created_at+" ";
+    messageDiv.appendChild(messageDate);
+
 
     var messageUser = document.createElement("span");
     messageUser.style.display = "block";
@@ -69,61 +77,4 @@ function formSubmitMessage() {
     addMessage(message);
     form.elements["message"].value = "";
     return false;
-}
-
-
-function printDeviceElement(device) {
-    var content = document.getElementById("content");
-
-    var deviceDiv = document.createElement("div");
-    deviceDiv.setAttribute("id", device.id);
-    deviceDiv.setAttribute("class", "device " + device.type);
-    content.appendChild(deviceDiv);
-
-    var deviceName = document.createElement("span");
-    deviceName.setAttribute("class", "deviceName");
-    deviceName.innerHTML = device.name;
-    deviceDiv.appendChild(deviceName);
-
-    var deviceType = document.createElement("span");
-    deviceType.innerHTML = "<b>Type:</b> " + device.type;
-    deviceDiv.appendChild(deviceType);
-
-    var deviceStatus = document.createElement("span");
-    if (device.status === "On") {
-        deviceStatus.innerHTML = "<b>Status:</b> " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn off</a>)";
-    } else if (device.status === "Off") {
-        deviceStatus.innerHTML = "<b>Status:</b> " + device.status + " (<a href=\"#\" OnClick=toggleDevice(" + device.id + ")>Turn on</a>)";
-        //deviceDiv.setAttribute("class", "device off");
-    }
-    deviceDiv.appendChild(deviceStatus);
-
-    var deviceDescription = document.createElement("span");
-    deviceDescription.innerHTML = "<b>Comments:</b> " + device.description;
-    deviceDiv.appendChild(deviceDescription);
-
-    var removeDevice = document.createElement("span");
-    removeDevice.setAttribute("class", "removeDevice");
-    removeDevice.innerHTML = "<a href=\"#\" OnClick=removeDevice(" + device.id + ")>Remove device</a>";
-    deviceDiv.appendChild(removeDevice);
-}
-
-function showForm() {
-    document.getElementById("addDeviceForm").style.display = '';
-}
-
-function hideForm() {
-   // document.getElementById("addDeviceForm").style.display = "none";
-}
-
-function formSubmit() {
-    var form = document.getElementById("addDeviceForm");
-    var color = form.elements["car_color"].value;
-    hideForm();
-    document.getElementById("addDeviceForm").reset();
-    addDevice(color);
-}
-
-function init() {
-   // hideForm();
 }

@@ -7,6 +7,7 @@ import org.picketlink.Identity;
 import org.picketlink.authorization.util.AuthorizationUtil;
 import org.picketlink.idm.PartitionManager;
 import rbac.ApplicationRole;
+import resteasy.Client;
 
 import javax.inject.Inject;
 import javax.servlet.FilterChain;
@@ -35,12 +36,14 @@ public class AdminAuthorizationFilter extends HttpFilter {
     public void doFilter(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, HttpSession httpSession, FilterChain filterChain) throws ServletException, IOException {
         String loginURL = httpServletRequest.getContextPath() + AdminUrlHelper.LOGIN_PAGE;
 
+        Client c = new Client();
+        c.get();
 
         boolean loggedIn = identity.isLoggedIn();
         boolean loginRequest = httpServletRequest.getRequestURI().equals(loginURL);
         boolean resourceRequest = Servlets.isFacesResourceRequest(httpServletRequest);
 
-        if (!AuthorizationUtil.hasRole(identity, partitionManager, ApplicationRole.MEMBER)) {
+        if (!AuthorizationUtil.hasRole(identity, partitionManager, ApplicationRole.ADMINISTRATOR) && !AuthorizationUtil.hasRole(identity, partitionManager, ApplicationRole.MODERATOR)) {
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             httpServletResponse.setContentType("Not acces level");
             httpServletResponse.getWriter().write("Unauthorized");

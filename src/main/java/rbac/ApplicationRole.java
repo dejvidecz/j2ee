@@ -5,10 +5,6 @@ package rbac;
  */
 public interface ApplicationRole {
 
-    String SELLER = "seller";
-    String BUYER = "buyer";
-    String AGENT = "agent";
-
     String ADMINISTRATOR = "admin";
     String MODERATOR = "moderator";
     String MEMBER = "member";
