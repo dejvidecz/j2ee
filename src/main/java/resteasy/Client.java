@@ -14,17 +14,25 @@ import java.util.List;
  */
 public class Client {
 
-    private static String BASE_URL = "https://private-77394-j2eeschool.apiary-mock.com";
+    private static String BASE_URL = "http://adminer.local";
 
-    public void get() {
-     //   System.setProperty("https.protocols", "TLSv1.2");
+    public List<CarOffer> get() {
+
+        try{
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(UriBuilder.fromPath(BASE_URL));
         CarServiceClientRESTInterface.ServicesInterface proxy = target.proxy(CarServiceClientRESTInterface.ServicesInterface.class);
 
         List<CarOffer> list = proxy.getCars();
-        System.out.println(list.size());
+            return list;
+
+        }catch (Exception e){
+            return null;
+        }
+
+
+
     }
 
 

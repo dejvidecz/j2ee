@@ -36,9 +36,6 @@ public class AdminAuthorizationFilter extends HttpFilter {
     public void doFilter(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, HttpSession httpSession, FilterChain filterChain) throws ServletException, IOException {
         String loginURL = httpServletRequest.getContextPath() + AdminUrlHelper.LOGIN_PAGE;
 
-        Client c = new Client();
-        c.get();
-
         boolean loggedIn = identity.isLoggedIn();
         boolean loginRequest = httpServletRequest.getRequestURI().equals(loginURL);
         boolean resourceRequest = Servlets.isFacesResourceRequest(httpServletRequest);

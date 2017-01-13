@@ -14,7 +14,6 @@ import java.util.List;
  */
 public interface CarServiceClientRESTInterface {
 
-    @Path("/")
     public interface ServicesInterface {
 
         @GET
@@ -24,7 +23,7 @@ public interface CarServiceClientRESTInterface {
 
 
         @GET
-        @Path("/cars")
+        @Path("/cars/")
         List<CarOffer> getCars();
 
 

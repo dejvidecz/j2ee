@@ -2,6 +2,7 @@ package data;
 
 import model.CarOffer;
 import repository.CarRepository;
+import resteasy.Client;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
@@ -21,7 +22,13 @@ public class CarListProducer {
 
     @PostConstruct
     public void retrieveAllMembersOrderedByName() {
+
         carOfferList = carRepository.findAll();
+        Client client = new Client();
+        List<CarOffer> listApi = client.get();
+        if(listApi!=null){
+            carOfferList.addAll(listApi);
+        }
     }
 
     @Produces

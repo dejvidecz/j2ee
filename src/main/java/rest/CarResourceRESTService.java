@@ -33,7 +33,7 @@ import java.util.*;
  * This class produces a RESTful service to read/write
  * the contents of the members table.
  */
-@Path("/car")
+@Path("/cars")
 @RequestScoped
 public class CarResourceRESTService {
 
@@ -53,57 +53,6 @@ public class CarResourceRESTService {
         return repository.findAll();
     }
 
-    @GET
-    @Path("/{id:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public CarOffer lookupCarById(@PathParam("id") long id) {
-        CarOffer carOffer = repository.findById(id);
-        if (carOffer == null) {
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
-        return carOffer;
-    }
-
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createCar(CarOffer carOffer) {
-
-        Response.ResponseBuilder builder = null;
-
-        try {
-            carService.create(carOffer);
-            // Create an "ok" response
-            builder = Response.ok();
-        } catch (ConstraintViolationException ce) {
-            // Handle bean validation issues
-            builder = createViolationResponse(ce.getConstraintViolations());
-        } catch (Exception e) {
-            // Handle generic exceptions
-            Map<String, String> responseObj = new HashMap<>();
-            responseObj.put("error", e.getMessage());
-            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        }
-
-        return builder.build();
-    }
-
-
-    /**
-     * Creates a JAX-RS "Bad Request" response including a map of all violation fields, and their message. This can then be used
-     * by clients to show violations.
-     *
-     * @param violations A set of violations that needs to be reported
-     * @return JAX-RS response containing all violations
-     */
-    private Response.ResponseBuilder createViolationResponse(Set<ConstraintViolation<?>> violations) {
-        Map<String, String> responseObj = new HashMap<>();
-        for (ConstraintViolation<?> violation : violations) {
-            responseObj.put(violation.getPropertyPath().toString(), violation.getMessage());
-        }
-        return Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-    }
 
 
 }

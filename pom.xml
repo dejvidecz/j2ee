@@ -345,12 +345,9 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
             <version>3.1.0.Final</version>
+            <scope>provided</scope> <!-- provided if youre deploying to jboss as 7.1 -->
         </dependency>
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson-provider</artifactId>
-            <version>3.0.10.Final</version>
-        </dependency>
+
 
 
     </dependencies>
