@@ -2,7 +2,7 @@
  * Created by Dejv on 12.01.17.
  */
 window.onload = init;
-var socket = new WebSocket("ws://localhost:8080/jboss-helloworld/chat");
+var socket = new WebSocket("ws://http://mysupperapp-javaeeschool2.44fs.preview.openshiftapps.com/jboss-helloworld/chat");
 var ACTION_ADD = "add";
 var ACTION_SET_USERNAME = "username";
 
@@ -67,7 +67,7 @@ function formSubmitMessage() {
     var form = document.getElementById("chat-form");
     var message = form.elements["message"].value;
     addMessage(message);
-    form.elements["message"].value("");
+    form.elements["message"].value = "";
     return false;
 }
 
