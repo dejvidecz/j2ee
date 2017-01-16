@@ -107,14 +107,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--
+
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
                 <version>1.1.5.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
-            </dependency>-->
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -292,7 +292,7 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
         </dependency>
-<!--
+
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
@@ -303,7 +303,7 @@
             <artifactId>arquillian-tomcat-remote-7</artifactId>
             <version>1.0.0.CR7</version>
         </dependency>
-        -->
+
 
         <!-- https://mvnrepository.com/artifact/org.jboss.arquillian.extension/arquillian-rest-client-impl-jersey -->
         <dependency>
