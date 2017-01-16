@@ -11,7 +11,7 @@
         </div>
 
 
-        <div class="forms" style="position: absolute;bottom:0;">
+        <div class="forms" style="position: absolute;bottom:0;" onsubmit="formSubmitUsername();return false;">
             <div id="username-form-wrapper">
                 <h:form id="username-form">
                     <div class="form-group">
@@ -23,7 +23,7 @@
             </div>
 
 
-            <div id="chat-form-wrapper" style="display:none;">
+            <div id="chat-form-wrapper" style="display:none;" onsubmit="formSubmitMessage()">
                 <h:form id="chat-form">
                     <div class="form-group">
                     <input placeholder="message" type="text" name="message" id="message" />
