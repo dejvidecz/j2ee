@@ -12,22 +12,16 @@ import java.util.List;
 /**
  * Created by Dejv on 13.01.17.
  */
-public interface CarServiceClientRESTInterface {
 
-    public interface ServicesInterface {
+public interface CarServiceClientRESTInterface {
 
         @GET
         @Path("/car/get/{id}")
         @Produces({ MediaType.APPLICATION_JSON})
         CarOffer carById(@QueryParam("id") String id);
 
-
         @GET
         @Path("/cars/")
         List<CarOffer> getCars();
-
-
-
-    }
 
 }

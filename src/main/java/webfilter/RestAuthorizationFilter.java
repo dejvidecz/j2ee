@@ -21,7 +21,6 @@ public class RestAuthorizationFilter extends HttpFilter {
     @Override
     public void doFilter(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, HttpSession httpSession, FilterChain filterChain) throws ServletException, IOException {
 
-
         String token = httpServletRequest.getParameter("token");
         if(!this.token.equals(token)){
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

@@ -22,23 +22,13 @@ public class ChatWebSocketServer {
     @Inject
     private ChatSessionHandler sessionHandler;
 
-
     @OnOpen
     public void open(Session session) {
         sessionHandler.addSession(session);
     }
 
     @OnClose
-    public void close(Session session) {
-        sessionHandler.removeSession(session);
-
-    }
-
-    @OnError
-    public void onError(Throwable error) {
-        Logger.getLogger(ChatWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
-
-    }
+    public void close(Session session) { sessionHandler.removeSession(session); }
 
     @OnMessage
     public void handleMessage(String message, Session session) {
@@ -63,6 +53,11 @@ public class ChatWebSocketServer {
         }
 
 
+    }
+
+    @OnError
+    public void onError(Throwable error) {
+        Logger.getLogger(ChatWebSocketServer.class.getName()).log(Level.SEVERE, null, error);
     }
 
 }

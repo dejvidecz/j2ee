@@ -36,20 +36,14 @@ import static org.junit.Assert.*;
 public class CarOfferServiceTest {
 
     @Inject
-    EntityManager entityManager;
-
-    @Inject
     CarService carService;
 
     @Inject
     CarRepository carRepository;
 
-
-
     private CarOffer createDefaultCar() {
         return TestHelpFactory.createCar(2001, Brand.AUDI, "Black", 20000, new Date(), "Prodej auta", "Popis", "12345", "asd@asd.com", "12312312312");
     }
-
 
     @Test
     public void test1create() throws Exception {
@@ -89,7 +83,7 @@ public class CarOfferServiceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClasses(CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarOffer.CarType.class)
+                .addClasses(CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarType.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 ;

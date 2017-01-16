@@ -129,7 +129,7 @@ public class RestServerMotoResourceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClasses(MotoOffer.class,MotoService.class,CarResourceRESTService.class, MotoDAO.class,MotoOffer.class,MotoResourceRESTService.class,MotoRepository.class, CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarOffer.CarType.class)
+                .addClasses(MotoOffer.class,MotoService.class,CarResourceRESTService.class, MotoDAO.class,MotoOffer.class,MotoResourceRESTService.class,MotoRepository.class, CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarType.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 ;

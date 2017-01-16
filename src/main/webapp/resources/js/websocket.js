@@ -11,12 +11,19 @@ socket.onmessage = onMessage;
 
 function onMessage(event) {
     var message = JSON.parse(event.data);
-    console.log("accepted message");
-    console.log(message);
     if (message.action === "add") {
         printMessage(message);
     }
 }
+
+function addMessage(body) {
+    var messageAddAction = {
+        action: ACTION_ADD,
+        body: body
+    };
+    socket.send(JSON.stringify(messageAddAction));
+}
+
 
 function printMessage(message) {
     var content = document.getElementById("content");
@@ -51,14 +58,6 @@ function setUsername(username){
         username: username
     };
     socket.send(JSON.stringify(messageUsernameAction));
-}
-function addMessage(body) {
-    var messageAddAction = {
-        action: ACTION_ADD,
-        body: body
-    };
-    socket.send(JSON.stringify(messageAddAction));
-
 }
 
 function formSubmitUsername() {

@@ -3,6 +3,7 @@ package DAO;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Transient;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -10,6 +11,7 @@ import java.io.Serializable;
  *
  * @author Dejv
  */
+@Transactional
 public class BasicDAO implements Serializable{
 
     /**
@@ -25,7 +27,6 @@ public class BasicDAO implements Serializable{
 
     public <T> T create(T entity) {
         entityManager.persist(entity);
-        //entityManager.merge(entity);
         return entity;
     }
 

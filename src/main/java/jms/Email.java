@@ -15,4 +15,9 @@ public class Email implements Serializable {
     public String receiver;
     public String body;
 
+
+    public String toString(){
+        return "Receiver: "+receiver+". Body:"+body;
+    }
+
 }

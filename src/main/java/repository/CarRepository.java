@@ -17,10 +17,8 @@ public class CarRepository {
     @Inject
     private EntityManager entityManager;
 
-    private EntityManagerFactory entityManagerFactory;
-
-    public CarOffer findById(long id){
-        return entityManager.find(CarOffer.class,id);
+    public CarOffer findById(long id) {
+        return entityManager.find(CarOffer.class, id);
     }
 
     public List<CarOffer> findAll() {
@@ -28,6 +26,6 @@ public class CarRepository {
     }
 
     public CarOffer finByTitle(String title) {
-        return (CarOffer) entityManager.createQuery("select c from CarOffer c WHERE c.title = :title").setParameter("title",title).getSingleResult();
+        return (CarOffer) entityManager.createQuery("select c from CarOffer c WHERE c.title = :title").setParameter("title", title).getSingleResult();
     }
 }

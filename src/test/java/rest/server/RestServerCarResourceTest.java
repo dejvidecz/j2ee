@@ -2,10 +2,7 @@ package rest.server;
 
 import DAO.BasicDAO;
 import DAO.CarDAO;
-import model.Brand;
-import model.CarOffer;
-import model.User;
-import model.VehicleOffer;
+import model.*;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.extension.rest.client.ArquillianResteasyResource;
@@ -132,7 +129,7 @@ public class RestServerCarResourceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClasses(CarResourceRESTService.class, CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarOffer.CarType.class)
+                .addClasses(CarResourceRESTService.class, CarService.class, EntityManager.class, CarDAO.class, CarOffer.class, VehicleOffer.class, BasicDAO.class, Resources.class, CarRepository.class, VehicleViewVisitorInterface.class, VehicleViewVisitor.class, User.class, Brand.class, CarType.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 ;

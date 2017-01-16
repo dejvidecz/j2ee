@@ -22,7 +22,6 @@ public class EmailJsmSender {
         this.d = InitialContext.doLookup("java:/Queue01");
     }
 
-
     public void send(Email email) {
 
         try ( JMSContext jcontext = cf.createContext("test","test")) {

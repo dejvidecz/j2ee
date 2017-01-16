@@ -10,6 +10,7 @@ import javax.ws.rs.core.UriBuilder;
 import java.util.List;
 
 /**
+ *
  * Created by Dejv on 13.01.17.
  */
 public class Client {
@@ -19,20 +20,16 @@ public class Client {
     public List<CarOffer> get() {
 
         try{
+            ResteasyClient client = new ResteasyClientBuilder().build();
+            ResteasyWebTarget target = client.target(UriBuilder.fromPath(BASE_URL));
+            CarServiceClientRESTInterface proxy = target.proxy(CarServiceClientRESTInterface.class);
 
-        ResteasyClient client = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = client.target(UriBuilder.fromPath(BASE_URL));
-        CarServiceClientRESTInterface.ServicesInterface proxy = target.proxy(CarServiceClientRESTInterface.ServicesInterface.class);
-
-        List<CarOffer> list = proxy.getCars();
-            return list;
+            List<CarOffer> list = proxy.getCars();
+                return list;
 
         }catch (Exception e){
             return null;
         }
-
-
-
     }
 
 

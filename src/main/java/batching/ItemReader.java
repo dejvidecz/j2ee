@@ -23,8 +23,6 @@ import java.util.logging.Logger;
 @Named
 public class ItemReader extends AbstractItemReader {
 
-    private BufferedReader reader;
-
     @Inject
     private VehicleRepository vehicleRepository;
 
@@ -37,9 +35,6 @@ public class ItemReader extends AbstractItemReader {
         vehicleOfferList = vehicleRepository.findAll();
         index=0;
     }
-
-
-
 
     @Override
     public Object readItem() throws Exception {

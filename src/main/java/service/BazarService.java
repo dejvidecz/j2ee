@@ -18,11 +18,7 @@ public class BazarService {
     @Inject
     private transient BazarDAO bazarDAO;
 
-    /**
-     *
-     * @param bazar
-     * @return
-     */
+
     public Bazar create(Bazar bazar){
         return bazarDAO.create(bazar);
     }

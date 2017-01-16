@@ -21,9 +21,7 @@ public class ChatSessionHandler {
 
     private final List<ChatMessage> chatMessages = new ArrayList<>();
 
-
     public void addSession(Session session) {
-
         sessions.add(session);
         //new session connected
         for(ChatMessage chatMessage : chatMessages){
@@ -34,7 +32,6 @@ public class ChatSessionHandler {
     public void removeSession(Session session) {
         sessions.remove(session);
     }
-
 
     /**
      *  Send an event message to all connected clients.
@@ -81,12 +78,11 @@ public class ChatSessionHandler {
 
     private JsonObject createMessageAdded(ChatMessage chatMessage) {
         JsonProvider provider = JsonProvider.provider();
-        JsonObject addMessage = provider.createObjectBuilder()
+        return provider.createObjectBuilder()
                 .add("action", "add")
                 .add("message", chatMessage.getMessage())
                 .add("username", chatMessage.getUsername())
                 .add("created_at",chatMessage.getCreated_at().toString())
                 .build();
-        return addMessage;
     }
 }
