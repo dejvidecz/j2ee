@@ -367,6 +367,7 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
             <version>3.0.18.Final-redhat-1</version>
+            <scope>provided</scope> <!-- provided if youre deploying to jboss as 7.1 -->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client -->
