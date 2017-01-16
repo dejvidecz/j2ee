@@ -1,24 +1,9 @@
-/*
- * JBoss, Home of Professional Open Source
- * Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
- * contributors by the @authors tag. See the copyright.txt in the
- * distribution for a full listing of individual contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package rest;
 
-import model.CarOffer;
-import repository.CarRepository;
-import service.CarService;
+import model.MotoOffer;
+import repository.MotoRepository;
+import service.MotoService;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
@@ -27,53 +12,55 @@ import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * This class produces a RESTful service to read/write
- * the contents of the car table.
+ * the contents of the moto table.
  */
-@Path("/car")
+@Path("/moto")
 @RequestScoped
-public class CarResourceRESTService {
+public class MotoResourceRESTService {
 
 
     @Inject
     private Validator validator;
 
     @Inject
-    private CarRepository repository;
+    private MotoRepository repository;
 
     @Inject
-    CarService carService;
+    MotoService motoService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CarOffer> carList() {
+    public List<MotoOffer> carList() {
         return repository.findAll();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public CarOffer lookupCarById(@PathParam("id") long id) {
-        CarOffer carOffer = repository.findById(id);
-        if (carOffer == null) {
+    public MotoOffer lookupCarById(@PathParam("id") long id) {
+        MotoOffer motoOffer = repository.findById(id);
+        if (motoOffer == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
-        return carOffer;
+        return motoOffer;
     }
 
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createCar(CarOffer carOffer) {
+    public Response createMoto(MotoOffer motoOffer) {
 
         Response.ResponseBuilder builder = null;
-
         try {
-            carService.create(carOffer);
+            motoService.create(motoOffer);
             // Create an "ok" response
             builder = Response.ok();
         } catch (ConstraintViolationException ce) {
@@ -89,6 +76,7 @@ public class CarResourceRESTService {
         return builder.build();
     }
 
+
     /**
      * Creates a JAX-RS "Bad Request" response including a map of all violation fields, and their message. This can then be used
      * by clients to show violations.
@@ -103,5 +91,6 @@ public class CarResourceRESTService {
         }
         return Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
     }
+
 
 }
