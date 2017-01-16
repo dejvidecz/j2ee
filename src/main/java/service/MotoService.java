@@ -1,7 +1,6 @@
 package service;
 
 import DAO.MotoDAO;
-import model.CarOffer;
 import model.MotoOffer;
 
 import javax.ejb.Stateless;
@@ -24,11 +23,11 @@ public class MotoService implements Serializable {
     }
 
 
-    public void delete(CarOffer bazar) {
+    public void delete(MotoOffer bazar) {
         motoDAO.delete(bazar);
     }
 
-    public void update(CarOffer bazar) {
+    public void update(MotoOffer bazar) {
         motoDAO.update(bazar);
     }
 }

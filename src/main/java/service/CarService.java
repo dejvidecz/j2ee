@@ -16,19 +16,10 @@ public class CarService implements Serializable {
     @Inject
     private transient CarDAO carDAO;
 
-    /*
-    public CarOffer create(CarOffer car){
-        return carDAO.create(car);
-    }
-*/
-
-    public <T> T create(T entity) {
+    public CarOffer create(CarOffer entity) {
         carDAO.create(entity);
-        //entityManager.persist(entity);
-        //entityManager.merge(entity);
         return entity;
     }
-
 
     public void delete(CarOffer bazar) {
         carDAO.delete(bazar);

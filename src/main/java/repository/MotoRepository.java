@@ -1,5 +1,6 @@
 package repository;
 
+import model.CarOffer;
 import model.MotoOffer;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -25,5 +26,10 @@ public class MotoRepository {
 
     public List<MotoOffer> findAll() {
         return entityManager.createQuery("select m from MotoOffer m").getResultList();
+    }
+
+    public MotoOffer finByTitle(String title) {
+        return (MotoOffer) entityManager.createQuery("select c from MotoOffer c WHERE c.title = :title").setParameter("title",title).getSingleResult();
+
     }
 }

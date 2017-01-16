@@ -37,14 +37,14 @@ public class MotoResourceRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<MotoOffer> carList() {
+    public List<MotoOffer> motoList() {
         return repository.findAll();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public MotoOffer lookupCarById(@PathParam("id") long id) {
+    public MotoOffer lookupMotoById(@PathParam("id") long id) {
         MotoOffer motoOffer = repository.findById(id);
         if (motoOffer == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -57,7 +57,6 @@ public class MotoResourceRESTService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createMoto(MotoOffer motoOffer) {
-
         Response.ResponseBuilder builder = null;
         try {
             motoService.create(motoOffer);

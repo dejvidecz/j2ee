@@ -26,4 +26,8 @@ public class CarRepository {
     public List<CarOffer> findAll() {
         return entityManager.createQuery("select c from CarOffer c").getResultList();
     }
+
+    public CarOffer finByTitle(String title) {
+        return (CarOffer) entityManager.createQuery("select c from CarOffer c WHERE c.title = :title").setParameter("title",title).getSingleResult();
+    }
 }
